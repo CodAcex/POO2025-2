@@ -1,0 +1,5 @@
+cd 'c:\Users\Carlos\Documents\GitHub\POO2025-2\LISTA 2\EX6\output' //exemplo de repositorio, aqui escolhemos qual o repositorio que o codigo esta
+
+g++ -Wall -Wextra -g3 ..\main.cpp ..\FrequenciaCardiaca.cpp -o main.exe //gerar o executavel
+
+.\main.exe //executa no output

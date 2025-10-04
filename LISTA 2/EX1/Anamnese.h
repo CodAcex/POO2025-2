@@ -1,4 +1,3 @@
-#ifndef ANAMNESE_H
 #define ANAMNESE_H
 
 #include <string>
@@ -46,4 +45,3 @@ public:
     string gerarResumo();
 };
 
-#endif // ANAMNESE_H

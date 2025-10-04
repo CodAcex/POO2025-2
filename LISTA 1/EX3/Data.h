@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-using namespace std; //pra não precisar escrever o std:: antes
+using namespace std; 
 
 class Data {
 

@@ -1,4 +1,3 @@
-#ifndef SMARTHOUSE_H
 #define SMARTHOUSE_H
 
 #include <string>
@@ -40,5 +39,3 @@ public:
     string status();
     void aplicarCena(string cena);
 };
-
-#endif 

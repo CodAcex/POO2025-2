@@ -1,4 +1,3 @@
-#ifndef FICHALEITURA_H
 #define FICHALEITURA_H
 
 #include <string>
@@ -51,4 +50,3 @@ public:
     string resumo();
 };
 
-#endif 

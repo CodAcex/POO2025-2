@@ -1,4 +1,3 @@
-#ifndef ASSISTENTEVIRTUAL_H
 #define ASSISTENTEVIRTUAL_H
 
 #include <string>
@@ -10,7 +9,7 @@ private:
     string nome;
     string idioma;
     string versao;
-    int volume;            // nível de volume (0 a 100, por exemplo)
+    int volume;// nível de volume (0 a 100, por exemplo)
     bool microfoneAtivo;
 
 public:
@@ -44,5 +43,3 @@ public:
     void registrarLembrete(string lembrete);
     string resumoStatus();
 };
-
-#endif

@@ -1,0 +1,31 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+		{
+			"label": "Build Album Executable",
+			"type": "shell",
+			"command": "g++",
+			"args": [
+				"main.cpp",
+				"Album.cpp",
+				"Figurinha.cpp",
+				"Pagina.cpp",
+				"Troca.cpp",
+				"Usuario.cpp",
+				"-g",
+				"-Wall",
+				"-o",
+				"album"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			},
+			"problemMatcher": "$gcc"
+		}
+	]
+}

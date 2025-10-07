@@ -10,10 +10,7 @@ private:
     int anoNasc;
 
 public:
-    // Construtor padrão
     FrequenciaCardiaca();
-
-    // Construtor parametrizado
     FrequenciaCardiaca(string nome, string sobrenome, int dia, int mes, int ano);
 
     string getPrimeiroNome();
@@ -45,7 +42,7 @@ public:
         void obterFrequenciaIdeal(int idade, int &minAlvo, int &maxAlvo);
         int getAnoNasc() const;
 
-        // Métodos principais
+        // Métodos
         int obterIdade(int diaAtual, int mesAtual, int anoAtual) const;
         int obterFrequenciaMaxima(int idade) const;                             // 220 - idade
         void obterFrequenciaIdeal(int idade, int &minAlvo, int &maxAlvo) const; // 50% - 85%

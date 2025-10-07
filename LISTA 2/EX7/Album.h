@@ -7,6 +7,7 @@ class Album {
 private:
     Figurinha figurinhas[MAX_FIGURINHAS];
     int quantidade;
+    
 public: 
     Album();
     ~Album();

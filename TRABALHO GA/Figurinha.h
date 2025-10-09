@@ -19,7 +19,6 @@ public:
     Figurinha(int nro, string nome, string time);
     ~Figurinha();
     
-    // Métodos (Sem const)
     int getNro();
     string getNome();
     string getTime();
@@ -30,4 +29,4 @@ public:
     void setNroPagina(int nroPagina);
 };
 
-#endif // FIGURINHA_H
+#endif

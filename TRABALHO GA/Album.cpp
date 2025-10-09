@@ -8,10 +8,6 @@
 
 using namespace std;
 
-// ======================================================================
-// Auxiliares
-// ======================================================================
-
 Figurinha* Album::encontrarFigurinha(int nro, int statusDesejado) {
     for (int i = 0; i < this->quantidade; i++) {
         if (this->figurinhas[i].getNro() == nro && 
@@ -40,7 +36,7 @@ void Album::inicializarPaginas() {
     }
 }
 
-// Construtor
+
 Album::Album()
 {
     this->quantidade = 0;
@@ -50,12 +46,8 @@ Album::Album()
     srand(time(0)); 
 }
 
-// Destrutor
-Album::~Album() {}
 
-// ======================================================================
-// Métodos de Lógica
-// ======================================================================
+Album::~Album() {}
 
 void Album::adicionar(Figurinha f) { 
     if (this->quantidade < 100) { 
@@ -160,9 +152,6 @@ void Album::revisarSolicitacoes() {
     cout << "Revisando solicitacoes de troca (a implementar)." << endl;
 }
 
-// ======================================================================
-// RESTAURADO: Album::salvar() (Cria [nome]_album.csv)
-// ======================================================================
 void Album::salvar(string nomeUsuario) 
 {
     string nomeArquivo = nomeUsuario + "_album.csv";
@@ -183,9 +172,6 @@ void Album::salvar(string nomeUsuario)
     }
 }
 
-// ======================================================================
-// RESTAURADO: Album::carregar() (Le [nome]_album.csv)
-// ======================================================================
 void Album::carregar(string nomeUsuario) 
 {
     string nomeArquivo = nomeUsuario + "_album.csv";
@@ -220,7 +206,6 @@ void Album::carregar(string nomeUsuario)
                 this->figurinhas[this->quantidade] = f;
                 this->quantidade++;
 
-                // Adicionar figurinha à página SOMENTE SE o status for COLADA (1)
                 if (status == 1) { 
                     Pagina* paginaAlvo = this->encontrarPagina(f.getNro());
                     if (paginaAlvo != nullptr) {
@@ -231,7 +216,8 @@ void Album::carregar(string nomeUsuario)
         }
         arquivo.close();
         // Não imprime mensagem de sucesso aqui para evitar poluir o console na chamada global
-    } else {
+    } else 
+    {
         // Arquivo não encontrado, Album vazio é criado pelo construtor. OK.
     }
 }

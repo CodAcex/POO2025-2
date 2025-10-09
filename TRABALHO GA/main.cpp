@@ -2,7 +2,7 @@
 #include <fstream>      
 #include <sstream>      
 #include <string>       
-#include "Usuario.h"    // Assume que inclui Album, Troca, Figurinha, etc.
+#include "Usuario.h"   
 
 using namespace std;
 
@@ -10,9 +10,6 @@ using namespace std;
 #define MAX_TROCAS 50
 #define MAX_FIGURINHAS_MESTRE 100
 
-// ----------------------------------------------------------------------
-// Declaração de Funções
-// ----------------------------------------------------------------------
 void salvarDados(Usuario usuarios[], int nroUsuarios, Troca trocasPendentes[], int nroTrocas);
 void carregarFigurinhasMestre(Figurinha figurinhasMestre[], int& nroFigurinhasMestre);
 void carregarDados(Usuario usuarios[], int& nroUsuarios, Troca trocasPendentes[], int& nroTrocas);
@@ -21,10 +18,7 @@ void exibirMenuPrincipal(Usuario usuarios[], int& nroUsuarios, Usuario*& usuario
 void exibirMenuAlbum(Usuario& usuario, Troca trocasPendentes[], int& nroTrocas);
 void exibirMenuColecao(Album& album, string nomeUsuario, Troca trocasPendentes[], int& nroTrocas);
 
-// ----------------------------------------------------------------------
-// Implementação das Funções de Persistência (SEPARADAS)
-// ----------------------------------------------------------------------
-
+//Implementa A Persistencia de Dados
 void carregarFigurinhasMestre(Figurinha figurinhasMestre[], int& nroFigurinhasMestre) {
     cout << "=> Carregando catalogo mestre a partir de 'figurinhas.csv'..." << endl;
     
@@ -67,19 +61,18 @@ void carregarFigurinhasMestre(Figurinha figurinhasMestre[], int& nroFigurinhasMe
 void carregarDados(Usuario usuarios[], int& nroUsuarios, Troca trocasPendentes[], int& nroTrocas) {
     cout << "=> Carregando dados do sistema a partir de arquivos separados..." << endl;
     
-    // 1. CARREGAR USUARIOS (usuarios.csv)
     ifstream arquivoUsuarios("usuarios.csv");
     string linha;
     nroUsuarios = 0;
     
     if (arquivoUsuarios.is_open()) {
-        getline(arquivoUsuarios, linha); // Pula a linha de cabeçalho
+        getline(arquivoUsuarios, linha); 
         while (getline(arquivoUsuarios, linha) && nroUsuarios < MAX_USUARIOS) {
             stringstream ss(linha);
             string nome, senha;
             
-            // Leitura simples (Nome, Senha)
-            if (getline(ss, nome, ',') && getline(ss, senha)) {
+            if (getline(ss, nome, ',') && getline(ss, senha)) 
+            {
                 usuarios[nroUsuarios].cadastrar(nome, senha);
                 nroUsuarios++;
             }
@@ -89,12 +82,11 @@ void carregarDados(Usuario usuarios[], int& nroUsuarios, Troca trocasPendentes[]
         cout << "Aviso: Nao foi possivel abrir 'usuarios.csv'. Iniciando sem usuarios salvos." << endl;
     }
 
-    // NOVO: Iterar sobre usuários carregados e carregar o álbum individualmente
     for (int i = 0; i < nroUsuarios; i++) {
         usuarios[i].getAlbum().carregar(usuarios[i].getNomeDeUsuario());
     }
 
-    // 2. CARREGAR TROCAS PENDENTES (trocas.csv)
+    //Carrega as trocas pendentes
     ifstream arquivoTrocas("trocas.csv");
     nroTrocas = 0;
     if (arquivoTrocas.is_open()) {
@@ -135,25 +127,20 @@ void carregarDados(Usuario usuarios[], int& nroUsuarios, Troca trocasPendentes[]
 void salvarDados(Usuario usuarios[], int nroUsuarios, Troca trocasPendentes[], int nroTrocas) {
     cout << "=> Salvando dados do sistema em arquivos separados..." << endl;
     
-    // 1. SALVAR USUARIOS (usuarios.csv)
     ofstream arquivoUsuarios("usuarios.csv");
     if (arquivoUsuarios.is_open()) {
-        // Cabeçalho simples restaurado
         arquivoUsuarios << "NomeDeUsuario,Senha" << endl; 
         
         for (int i = 0; i < nroUsuarios; i++) {
-            // Salva apenas nome e senha
             arquivoUsuarios << usuarios[i].getNomeDeUsuario() << "," 
                             << usuarios[i].getSenha() << endl;
             
-            // NOVO: Chamar o salvamento do álbum individualmente
             usuarios[i].getAlbum().salvar(usuarios[i].getNomeDeUsuario());
         }
         arquivoUsuarios.close();
         cout << "Usuarios salvos em 'usuarios.csv' e albuns em '[nome]_album.csv'." << endl;
     }
 
-    // 2. SALVAR TROCAS (trocas.csv)
     ofstream arquivoTrocas("trocas.csv");
     if (arquivoTrocas.is_open()) {
         arquivoTrocas << "NomeProponente,FigurinhaRequerida,FigurinhaDisponivel,Status" << endl;
@@ -170,10 +157,7 @@ void salvarDados(Usuario usuarios[], int nroUsuarios, Troca trocasPendentes[], i
     cout << "=> Dados salvos com sucesso!" << endl;
 }
 
-// ----------------------------------------------------------------------
-// Implementação das Funções de Menu (Sem alteração significativa aqui)
-// ----------------------------------------------------------------------
-
+//Implementação do menu principal
 void exibirMenuPrincipal(Usuario usuarios[], int& nroUsuarios, Usuario*& usuarioLogado, Troca trocasPendentes[], int& nroTrocas) {
     int opcao;
     
@@ -318,9 +302,6 @@ void exibirMenuAlbum(Usuario& usuario, Troca trocasPendentes[], int& nroTrocas) 
     } while (true);
 }
 
-// ----------------------------------------------------------------------
-// Função Principal
-// ----------------------------------------------------------------------
 
 int main() {
     Usuario usuarios[MAX_USUARIOS];

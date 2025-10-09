@@ -1,0 +1,42 @@
+Album de Figurinhas Virtual
+
+Equipe
+
+Carlos Henrique Yoshihide Guenka
+
+Descrição do Projeto
+
+
+    Este programa foi desenvolvido como parte da disciplina de Programação Orientada a Objetos, com o objetivo de criar um album de figurinhas, utilizando de C++.
+
+Estrutura do Projeto
+
+Listar e escrever brevemente sobre os principais arquivos de código:
+Arquivo 	Descrição
+Album.cpp  Implementação dos métodos e funções criadas em Album.h.
+
+Album.h
+
+Figurinha.cpp
+
+Figurinha.h
+
+Pagina.cpp
+
+Pagina.h
+
+Troca.cpp
+
+Troca.h
+
+Usuario.cpp
+
+Usuario.h
+
+main.cpp
+
+Informações Técnicas
+
+    Linguagem: C++ (C++11 ou superior)
+    IDE/Compilador: Visual Studio Code / MinGW 
+    Plataforma-alvo: Windows / Linux / MacOS

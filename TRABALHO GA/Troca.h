@@ -13,12 +13,10 @@ private:
     int status; // 0: Pendente, 1: Aceita, 2: Recusada
 
 public:
-    // Construtor
     Troca();
     Troca(string proponente, int requerida, int disponivel);
     ~Troca();
     
-    // Métodos (Sem const)
     string getNomeProponente();
     int getFigurinhaRequerida();
     int getFigurinhaDisponivel();
@@ -27,4 +25,4 @@ public:
     void aceitar(bool aceite);
 };
 
-#endif // TROCA_H
+#endif 

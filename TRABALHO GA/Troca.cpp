@@ -11,11 +11,10 @@ Troca::Troca(string proponente, int requerida, int disponivel)
     this->nomeProponente = proponente;
     this->figurinhaRequerida = requerida;
     this->figurinhaDisponivel = disponivel;
-    this->status = 0; // Pendente
+    this->status = 0;
 }
 Troca::~Troca(){}
 
-// Getters (Sem const)
 string Troca::getNomeProponente() { return this->nomeProponente; }
 int Troca::getFigurinhaRequerida() { return this->figurinhaRequerida; }
 int Troca::getFigurinhaDisponivel() { return this->figurinhaDisponivel; }

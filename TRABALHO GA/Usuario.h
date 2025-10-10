@@ -13,16 +13,14 @@ private:
     Album meuAlbum;
 
 public:
-    // Construtor Padrão
     Usuario() {}
-    
-    // Métodos (Sem const)
+
     void cadastrar(string nome, string senha);
     bool verificarLogin(string nome, string senha);
 
     string getNomeDeUsuario();
     string getSenha();
-    Album& getAlbum(); // Retorna Album& (Sem const)
+    Album& getAlbum();
 };
 
-#endif // USUARIO_H
+#endif 

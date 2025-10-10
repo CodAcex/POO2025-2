@@ -26,7 +26,6 @@ public:
     Album();
     ~Album();
 
-    // Métodos de Lógica
     void adicionar(Figurinha f); 
     bool possui(int nro);
     void colarFigurinha(int nro); 
@@ -34,13 +33,10 @@ public:
     void abrirPacote();
     void listarFigurinhasDisponiveis(); 
     void revisarSolicitacoes();
-    
     Pagina& getPagina(int index);
     void listarFigurinhasColecionaveis(); 
-    
-    // PERSISTÊNCIA RESTAURADA: Manipulam arquivos separados por usuário
     void salvar(string nomeUsuario);
     void carregar(string nomeUsuario);
 };
 
-#endif // ALBUM_H
+#endif

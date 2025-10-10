@@ -7,28 +7,44 @@ Troca::Troca()
 {
     this->status = TROCA_AGUARDANDO;
 }
-
 Troca::Troca(string proponente, int requerida, int disponivel)
 {
     this->nomeProponente = proponente;
     this->figurinhaRequerida = requerida;
     this->figurinhaDisponivel = disponivel;
-    this->status = TROCA_AGUARDANDO; // Usando #define
+    this->status = TROCA_AGUARDANDO; 
+}
+Troca::~Troca()
+{
+
 }
 
-// Implementação do Destrutor mantido
-Troca::~Troca(){}
+// Getters
+string Troca::getNomeProponente() 
+{ 
+    return this->nomeProponente; 
+}
+int Troca::getFigurinhaRequerida()
+{ 
+    return this->figurinhaRequerida; 
+}
+int Troca::getFigurinhaDisponivel() 
+{ 
+    return this->figurinhaDisponivel; 
+}
+int Troca::getStatus() 
+{ 
+    return this->status; 
+}
 
-// Implementação dos Getters
-string Troca::getNomeProponente() { return this->nomeProponente; }
-int Troca::getFigurinhaRequerida() { return this->figurinhaRequerida; }
-int Troca::getFigurinhaDisponivel() { return this->figurinhaDisponivel; }
-int Troca::getStatus() { return this->status; }
-
-void Troca::aceitar(bool aceite) {
-    if (aceite) {
-        this->status = TROCA_ACEITA; // Usando #define
-    } else {
-        this->status = TROCA_RECUSADA; // Usando #define
+void Troca::aceitar(bool aceite) 
+{
+    if (aceite) 
+    {
+        this->status = TROCA_ACEITA;
+    } 
+    else 
+    {
+        this->status = TROCA_RECUSADA;
     }
 }

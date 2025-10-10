@@ -3,15 +3,15 @@
 
 #include <string>
 
-// === DEFINIÇÕES DE STATUS DA TROCA ===
+
 #define TROCA_AGUARDANDO    0
 #define TROCA_ACEITA        1
 #define TROCA_RECUSADA      2
-// ===========================================
 
 using namespace std;
 
-class Troca {
+class Troca 
+{
 private:
     string nomeProponente;
     int figurinhaRequerida;
@@ -21,9 +21,9 @@ private:
 public:
     Troca();
     Troca(string nomeProponente, int requerida, int disponivel);
-    ~Troca(); // Destrutor declarado
+    ~Troca();
 
-    // Getters: AGORA APENAS DECLARAÇÕES
+    // Getters
     int getStatus();
     string getNomeProponente();
     int getFigurinhaRequerida();
@@ -33,4 +33,4 @@ public:
     void aceitar(bool aceita);
 };
 
-#endif // TROCA_H
+#endif

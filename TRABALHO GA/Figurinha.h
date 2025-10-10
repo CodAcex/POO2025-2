@@ -9,7 +9,8 @@
 
 using namespace std;
 
-class Figurinha {
+class Figurinha 
+{
 private:
     int nro;
     string nome;

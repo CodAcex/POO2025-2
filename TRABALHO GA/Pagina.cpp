@@ -27,9 +27,14 @@ Pagina::~Pagina()
 }
 
 
-int Pagina::getNroInicial() { return this->nroInicial; }
-int Pagina::getNroFinal() { return this->nroFinal; }
-
+int Pagina::getNroInicial() 
+{ 
+    return this->nroInicial; 
+}
+int Pagina::getNroFinal() 
+{
+    return this->nroFinal; 
+}
 void Pagina::adicionarFigurinha(Figurinha f) 
 {
     int posicao = f.getNro() - this->nroInicial;
@@ -41,7 +46,8 @@ void Pagina::adicionarFigurinha(Figurinha f)
     }
 }
 
-void Pagina::listar() {
+void Pagina::listar() 
+{
     cout << "\n--- PAGINA: " << this->titulo << " (Nros " << this->nroInicial << " a " << this->nroFinal << ") ---" << endl;
     
     for (int i = 0; i < MAX_FIGURINHAS_PAGINA; ++i) 
@@ -50,7 +56,9 @@ void Pagina::listar() {
         if (this->figurinhasNaPagina[i].getNro() == nroEsperado) 
         {
             cout << "[X] #" << nroEsperado << " - " << this->figurinhasNaPagina[i].getNome() << endl;
-        } else {
+        } 
+        else 
+        {
             cout << "[ ] #" << nroEsperado << " - Vazio" << endl;
         }
     }

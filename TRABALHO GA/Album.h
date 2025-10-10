@@ -8,35 +8,37 @@
 
 using namespace std;
 
-class Album {
+class Album 
+{
 private:
     Figurinha figurinhas[100]; 
     int quantidade;
-    Pagina paginas[20];
+    Pagina paginas[5];
     int nroPaginas;
     Troca trocas[10]; 
     int nroTrocas;
     
     void inicializarPaginas();
     
-    Pagina* encontrarPagina(int nroFigurinha); 
-    Figurinha* encontrarFigurinha(int nro, int statusDesejado); 
+    Pagina* encontrarPagina(int nroFigurinha);
 
 public:
     Album();
     ~Album();
 
+    Figurinha* encontrarFigurinha(int nro, int statusDesejado); 
     void adicionar(Figurinha f); 
     bool possui(int nro);
     void colarFigurinha(int nro); 
     void disponibilizarParaTroca(int nro); 
-    void abrirPacote();
+    void abrirPacote(Figurinha figurinhasMestre[], int nroFigurinhasMestre);
     void listarFigurinhasDisponiveis(); 
     void revisarSolicitacoes();
     Pagina& getPagina(int index);
     void listarFigurinhasColecionaveis(); 
     void salvar(string nomeUsuario);
     void carregar(string nomeUsuario);
+    void adicionarTroca(Troca t);
 };
 
 #endif

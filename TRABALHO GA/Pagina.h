@@ -6,9 +6,10 @@
 
 using namespace std;
 
-#define MAX_FIGURINHAS_PAGINA 10 
+#define MAX_FIGURINHAS_PAGINA 20
 
-class Pagina {
+class Pagina 
+{
 private:
     string titulo;
     int nroInicial;

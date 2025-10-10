@@ -2,15 +2,30 @@
 
 using namespace std;
 
-void Usuario::cadastrar(string nome, string senha) {
+Usuario::Usuario()
+{
+}
+
+void Usuario::cadastrar(string nome, string senha)
+{
     this->nomeDeUsuario = nome;
     this->senha = senha;
 }
 
-bool Usuario::verificarLogin(string nome, string senha) {
+bool Usuario::verificarLogin(string nome, string senha) 
+{
     return (this->nomeDeUsuario == nome && this->senha == senha);
 }
 
-string Usuario::getNomeDeUsuario() { return this->nomeDeUsuario; }
-string Usuario::getSenha() { return this->senha; }
-Album& Usuario::getAlbum() { return this->meuAlbum; }
+string Usuario::getNomeDeUsuario() 
+{ 
+    return this->nomeDeUsuario; 
+}
+string Usuario::getSenha() 
+{ 
+    return this->senha; 
+}
+Album& Usuario::getAlbum() 
+{ 
+    return this->meuAlbum; 
+}

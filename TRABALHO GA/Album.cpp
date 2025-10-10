@@ -201,9 +201,9 @@ void Album::listarFigurinhasColecionaveis()
     }
 }
 
-Pagina& Album::getPagina(int index) 
+Pagina& Album::getPagina(int i) 
 {
-    return this->paginas[index-1];
+    return this->paginas[i-1];
 }
 
 void Album::revisarSolicitacoes() 
@@ -228,7 +228,9 @@ void Album::revisarSolicitacoes()
     cout << "Digite o Nro da Proposta para Revisar (1-" << this->nroTrocas << ") ou 0 para Sair: ";
     if (!(cin >> indice) || indice < 0 || indice > this->nroTrocas) 
     { 
-        cin.clear(); cin.ignore(10000, '\n'); return; 
+        cin.clear(); 
+        cin.ignore(10000, '\n'); 
+        return; 
     }
 
     if (indice == 0) return;
@@ -253,7 +255,7 @@ void Album::revisarSolicitacoes()
         if (this->encontrarFigurinha(troca.getFigurinhaRequerida(), FIG_PARA_TROCA) != nullptr) 
         {
             troca.aceitar(true);
-            cout << "Troca ACEITA. As alteracoes no seu album serao aplicadas na proxima etapa (Trocas Globais)." << endl;      
+            cout << "Troca ACEITA." << endl;      
         } 
         else 
         {

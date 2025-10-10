@@ -18,10 +18,10 @@ void exibirMenuPrincipal(Usuario usuarios[], int& nroUsuarios, Usuario*& usuario
 void exibirMenuColecao(Album& album, string nomeUsuario, Troca trocasPendentes[], int& nroTrocas, Usuario usuarios[], int nroUsuarios);
 void exibirMenuAlbum(Usuario& usuario, Troca trocasPendentes[], int& nroTrocas, Figurinha figurinhasMestre[], int nroFigurinhasMestre, Usuario usuarios[], int nroUsuarios);
 
-//Implementa A Persistencia de Dados
+//Implementa A Persistencia 
 void carregarFigurinhasMestre(Figurinha figurinhasMestre[], int& nroFigurinhasMestre) 
 {
-    cout << "=> Carregando catalogo mestre a partir de 'figurinhas.csv'..." << endl;
+    cout << "Carregando catalogo a partir de 'figurinhas.csv'..." << endl;
     
     ifstream arquivoFigurinhas("figurinhas.csv");
     string linha;
@@ -42,7 +42,7 @@ void carregarFigurinhasMestre(Figurinha figurinhasMestre[], int& nroFigurinhasMe
                 
                 if (!(ss_nro >> nro)) 
                 {
-                    cout << "Erro de formato (Nro) em 'figurinhas.csv': " << nroStr << endl;
+                    cout << "Erro em 'figurinhas.csv': " << nroStr << endl;
                     continue; 
                 }
                 
@@ -51,17 +51,11 @@ void carregarFigurinhasMestre(Figurinha figurinhasMestre[], int& nroFigurinhasMe
             }
         }
         arquivoFigurinhas.close();
-        cout << "=> Catalogo mestre carregado. (" << nroFigurinhasMestre << " figurinhas encontradas)" << endl;
+        cout << "Catalogo mestre carregado. (" << nroFigurinhasMestre << " figurinhas encontradas)" << endl;
     } 
     else 
     {
-        cout << "ERRO: Nao foi possivel abrir 'figurinhas.csv'. Usando figurinhas padrao para teste." << endl;
-        
-        nroFigurinhasMestre = 0; 
-        Figurinha f1(1, "Messi", "ARG"); 
-        Figurinha f2(5, "Neymar", "BRA");
-        if (nroFigurinhasMestre < MAX_FIGURINHAS_MESTRE) figurinhasMestre[nroFigurinhasMestre++] = f1;
-        if (nroFigurinhasMestre < MAX_FIGURINHAS_MESTRE) figurinhasMestre[nroFigurinhasMestre++] = f2;
+        cout << "ERRO: Nao foi possivel abrir 'figurinhas.csv'." << endl;
     }
 }
 
@@ -79,7 +73,7 @@ Usuario* encontrarUsuario(Usuario usuarios[], int nroUsuarios, string nome)
 
 void carregarDados(Usuario usuarios[], int& nroUsuarios, Troca trocasPendentes[], int& nroTrocas) 
 {
-    cout << "=> Carregando dados do sistema a partir de arquivos separados..." << endl;
+    cout << "Carregando dados do sistema a partir de arquivos separados..." << endl;
     
     ifstream arquivoUsuarios("usuarios.csv");
     string linha;
@@ -152,12 +146,12 @@ void carregarDados(Usuario usuarios[], int& nroUsuarios, Troca trocasPendentes[]
         cout << "Arquivo fechado com sucesso!" << endl;
     }
     
-    cout << "=> Dados carregados. (" << nroUsuarios << " usuarios e " << nroTrocas << " trocas encontradas)" << endl;
+    cout << "Dados carregados. (" << nroUsuarios << " usuarios e " << nroTrocas << " trocas encontradas)" << endl;
 }
 
 void salvarDados(Usuario usuarios[], int nroUsuarios, Troca trocasPendentes[], int nroTrocas) 
 {
-    cout << "=> Salvando dados do sistema em arquivos separados..." << endl;
+    cout << "Salvando dados do sistema em arquivos separados..." << endl;
     
     ofstream arquivoUsuarios("usuarios.csv");
     if (arquivoUsuarios.is_open()) 
@@ -269,7 +263,9 @@ void exibirMenuColecao(Album& album, string nomeUsuario, Troca trocasPendentes[]
         if (!(cin >> opcao)) 
         { 
             cout << "Entrada invalida. Digite um numero de opcao." << endl;
-            cin.clear(); cin.ignore(10000, '\n'); continue; 
+            cin.clear(); 
+            cin.ignore(10000, '\n'); 
+            continue; 
         }
 
         if (opcao == 1)
@@ -277,7 +273,9 @@ void exibirMenuColecao(Album& album, string nomeUsuario, Troca trocasPendentes[]
             cout << "Numero da figurinha a ser colada: ";
             if (!(cin >> nro)) 
             { 
-                cin.clear(); cin.ignore(10000, '\n'); continue;
+                cin.clear(); 
+                cin.ignore(10000, '\n'); 
+                continue;
             }
             album.colarFigurinha(nro);
         } 
@@ -286,7 +284,9 @@ void exibirMenuColecao(Album& album, string nomeUsuario, Troca trocasPendentes[]
             cout << "Numero da figurinha a disponibilizar para troca: ";
             if (!(cin >> nro)) 
             { 
-                cin.clear(); cin.ignore(10000, '\n'); continue; 
+                cin.clear(); 
+                cin.ignore(10000, '\n'); 
+                continue; 
             }
             album.disponibilizarParaTroca(nro);
         } 
@@ -320,19 +320,23 @@ void exibirMenuColecao(Album& album, string nomeUsuario, Troca trocasPendentes[]
         continue;
         }
 
-        // LÓGICA DE PROPOR TROCA
+        // Logica da troca.
         int figRequerida, figDisponivel;
         cout << "\n--- Propor Nova Troca com " << parceiroNome << " ---" << endl;
         cout << "Figurinha que voce quer receber (Nro): ";
         if (!(cin >> figRequerida)) 
         { 
-            cin.clear(); cin.ignore(10000, '\n'); continue; 
+            cin.clear(); 
+            cin.ignore(10000, '\n'); 
+            continue; 
         }
     
         cout << "Figurinha que voce DISPONIBILIZA (Nro): ";
         if (!(cin >> figDisponivel)) 
         { 
-            cin.clear(); cin.ignore(10000, '\n'); continue; 
+            cin.clear(); 
+            cin.ignore(10000, '\n'); 
+            continue; 
         }
 
         if (album.encontrarFigurinha(figDisponivel, FIG_PARA_TROCA) != nullptr) 

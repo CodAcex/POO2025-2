@@ -42,7 +42,7 @@ void Pagina::adicionarFigurinha(Figurinha f)
     if (posicao >= 0 && posicao < MAX_FIGURINHAS_PAGINA) 
     {
         this->figurinhasNaPagina[posicao] = f;
-         this->nroFigurinhas++; 
+        this->nroFigurinhas++; 
     }
 }
 

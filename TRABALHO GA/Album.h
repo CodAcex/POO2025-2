@@ -17,9 +17,7 @@ private:
     int nroPaginas;
     Troca trocas[10]; 
     int nroTrocas;
-    
     void inicializarPaginas();
-    
     Pagina* encontrarPagina(int nroFigurinha);
 
 public:
@@ -34,7 +32,7 @@ public:
     void abrirPacote(Figurinha figurinhasMestre[], int nroFigurinhasMestre);
     void listarFigurinhasDisponiveis(); 
     void revisarSolicitacoes();
-    Pagina& getPagina(int index);
+    Pagina& getPagina(int i);
     void listarFigurinhasColecionaveis(); 
     void salvar(string nomeUsuario);
     void carregar(string nomeUsuario);

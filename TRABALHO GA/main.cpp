@@ -302,20 +302,20 @@ void exibirMenuColecao(Album& album, string nomeUsuario, Troca trocasPendentes[]
         cout << "\n--- LISTA DE USUARIOS DISPONIVEIS ---" << endl;
             for (int i = 0; i < nroUsuarios; ++i) 
             { 
-                 if (usuarios[i].getNomeDeUsuario() != nomeUsuario) {
-            cout << i + 1 << ". " << usuarios[i].getNomeDeUsuario() << " - Figurinhas disponiveis: ";
-            // ***OPCIONAL: LISTAR FIGURINHAS DISPONIVEIS DO PARCEIRO***
-            // usuarios[i].getAlbum().listarFigurinhasDisponiveis(); 
-            cout << endl;
-        }
+                if (usuarios[i].getNomeDeUsuario() != nomeUsuario) 
+                 {
+                cout << i + 1 << ". " << usuarios[i].getNomeDeUsuario() << " - Figurinhas disponiveis: ";
+                usuarios[i].getAlbum().listarFigurinhasDisponiveis(); 
+                cout << endl;
+                }
     }
 
     string parceiroNome;
         cout << "Nome do Parceiro de Troca: "; cin >> parceiroNome;
 
-        // Se o parceiro não existe, ou é o próprio usuário, sai.
-        Usuario* parceiro = encontrarUsuario(usuarios, nroUsuarios, parceiroNome); // <--- **ASSUME** que usuarios[] e nroUsuarios estão acessíveis
-        if (parceiro == nullptr || parceiro->getNomeDeUsuario() == nomeUsuario) {
+        Usuario* parceiro = encontrarUsuario(usuarios, nroUsuarios, parceiroNome);
+        if (parceiro == nullptr || parceiro->getNomeDeUsuario() == nomeUsuario) 
+        {
         cout << "ERRO: Parceiro de troca invalido ou nao encontrado." << endl;
         continue;
         }
@@ -324,21 +324,22 @@ void exibirMenuColecao(Album& album, string nomeUsuario, Troca trocasPendentes[]
         int figRequerida, figDisponivel;
         cout << "\n--- Propor Nova Troca com " << parceiroNome << " ---" << endl;
         cout << "Figurinha que voce quer receber (Nro): ";
-        if (!(cin >> figRequerida)) { cin.clear(); cin.ignore(10000, '\n'); continue; }
+        if (!(cin >> figRequerida)) 
+        { 
+            cin.clear(); cin.ignore(10000, '\n'); continue; 
+        }
     
         cout << "Figurinha que voce DISPONIBILIZA (Nro): ";
-        if (!(cin >> figDisponivel)) { cin.clear(); cin.ignore(10000, '\n'); continue; }
+        if (!(cin >> figDisponivel)) 
+        { 
+            cin.clear(); cin.ignore(10000, '\n'); continue; 
+        }
 
-        // Verifica se o usuário logado possui a figurinha
         if (album.encontrarFigurinha(figDisponivel, FIG_PARA_TROCA) != nullptr) 
         {
-        // 1. Cria a troca na lista global
         Troca novaTroca(nomeUsuario, figRequerida, figDisponivel);
-        trocasPendentes[nroTrocas++] = novaTroca;
-        
-        // 2. Adiciona a troca ao álbum do PARCEIRO para ele revisar
-        parceiro->getAlbum().adicionarTroca(novaTroca); // <-- **REQUER** novo método no Album.h/cpp
-        
+        trocasPendentes[nroTrocas++] = novaTroca;    
+        parceiro->getAlbum().adicionarTroca(novaTroca); 
         cout << "Proposta de troca enviada para " << parceiroNome << " com sucesso! Aguardando aceite." << endl;
         } 
         else 

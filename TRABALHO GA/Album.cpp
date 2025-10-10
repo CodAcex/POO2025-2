@@ -117,31 +117,28 @@ void Album::abrirPacote(Figurinha figurinhasMestre[], int nroFigurinhasMestre)
 {
     cout << "\n--- Abrindo Pacote de 3 Figurinhas ---" << endl;
     
-    // Define o limite máximo para geração aleatória (seu número de figurinhas no CSV)
-    int limite; // Declara a variável 'limite'
+    int limite; 
 
-if (nroFigurinhasMestre > 0) {
-    // Se o catálogo mestre foi carregado corretamente
+if (nroFigurinhasMestre > 0)
+{
     limite = nroFigurinhasMestre;
-} else {
-    // Se houve erro no carregamento, usa o limite padrão (fallback)
+} 
+else
+{
     limite = 20;
 }
 
     for (int i = 0; i < 3; ++i) 
     {
-        // 1. Gera um número aleatório de 1 até o seu limite
         int nroAleatorio = (rand() % limite) + 1; 
-
-        // 2. Busca a Figurinha Mestra (para pegar Nome e Time)
-        Figurinha figurinhaMestraEncontrada; // Objeto temporário para guardar os dados
+      
+        Figurinha figurinhaMestraEncontrada; 
         bool encontrada = false;
 
         for (int j = 0; j < nroFigurinhasMestre; ++j) 
         {
             if (figurinhasMestre[j].getNro() == nroAleatorio) 
             {
-                // Copia os dados corretos (Nome e Time) da figurinha mestre para o temporário
                 figurinhaMestraEncontrada = figurinhasMestre[j];
                 encontrada = true;
                 break;
@@ -150,14 +147,8 @@ if (nroFigurinhasMestre > 0) {
         
         if (encontrada)
         {
-            // 3. Cria a figurinha real do usuário usando os dados da lista mestre
-            Figurinha novaFig(
-                figurinhaMestraEncontrada.getNro(), 
-                figurinhaMestraEncontrada.getNome(), 
-                figurinhaMestraEncontrada.getTime()
-            );
+            Figurinha novaFig(figurinhaMestraEncontrada.getNro(), figurinhaMestraEncontrada.getNome(), figurinhaMestraEncontrada.getTime());
             
-            // Adiciona a figurinha à coleção do usuário
             novaFig.setStatus(0); 
             this->adicionar(novaFig);
             
@@ -165,7 +156,6 @@ if (nroFigurinhasMestre > 0) {
         } 
         else 
         {
-            // Caso de erro: o número gerado não existe no catálogo
             cout << "  - ERRO: Figurinha #" << nroAleatorio << " gerada, mas nao encontrada no catalogo mestre." << endl;
         }
     }
@@ -199,10 +189,8 @@ void Album::listarFigurinhasColecionaveis()
     {
         int status = this->figurinhas[i].getStatus();
         
-        // Verifica se a figurinha é colecionável (Repetida ou Para Troca)
-        if (status == FIG_NA_COLECAO || status == FIG_PARA_TROCA) { 
-            
-            // CHAMA getNomeStatus() PARA EXIBIR O NOME COMPLETO
+        if (status == FIG_NA_COLECAO || status == FIG_PARA_TROCA) 
+        { 
             cout << "[#" << this->figurinhas[i].getNro() << "] - " << this->figurinhas[i].getNome() << " (" << this->figurinhas[i].getNomeStatus() << ")" << endl; // <--- MUDANÇA AQUI
             encontrou = true;
         }
@@ -232,38 +220,43 @@ void Album::revisarSolicitacoes()
     {
         if (this->trocas[i].getStatus() == TROCA_AGUARDANDO) 
         {
-            cout << " [" << i + 1 << "] Proposta de " << this->trocas[i].getNomeProponente() 
-                 << ": Voce RECEBE #" << this->trocas[i].getFigurinhaDisponivel() 
-                 << " por sua #" << this->trocas[i].getFigurinhaRequerida() << endl;
+            cout << " [" << i + 1 << "] Proposta de " << this->trocas[i].getNomeProponente() << ": Voce RECEBE #" << this->trocas[i].getFigurinhaDisponivel() << " por sua #" << this->trocas[i].getFigurinhaRequerida() << endl;
         }
     }
     
     int indice, acao;
     cout << "Digite o Nro da Proposta para Revisar (1-" << this->nroTrocas << ") ou 0 para Sair: ";
-    if (!(cin >> indice) || indice < 0 || indice > this->nroTrocas) { cin.clear(); cin.ignore(10000, '\n'); return; }
+    if (!(cin >> indice) || indice < 0 || indice > this->nroTrocas) 
+    { 
+        cin.clear(); cin.ignore(10000, '\n'); return; 
+    }
 
     if (indice == 0) return;
     
     Troca& troca = this->trocas[indice - 1];
 
-    if (troca.getStatus() != TROCA_AGUARDANDO) {
+    if (troca.getStatus() != TROCA_AGUARDANDO) 
+    {
         cout << "Esta troca ja foi " << (troca.getStatus() == TROCA_ACEITA ? "ACEITA" : "RECUSADA") << "." << endl;
         return;
     }
 
     cout << "Acao para Proposta #" << indice << " (1-Aceitar, 2-Recusar): ";
-    if (!(cin >> acao) || (acao != 1 && acao != 2)) { cout << "Acao invalida." << endl; cin.clear(); cin.ignore(10000, '\n'); return; }
+    if (!(cin >> acao) || (acao != 1 && acao != 2)) 
+    { 
+        cout << "Acao invalida." << endl; cin.clear(); cin.ignore(10000, '\n'); return; 
+    }
 
-    // Verifica se o usuário tem a figurinha para a troca ser válida
-    if (acao == 1) {
-        // Verifica se o álbum do receptor tem a figurinha que o proponente quer (para garantir)
+    if (acao == 1) 
+    {
+        
         if (this->encontrarFigurinha(troca.getFigurinhaRequerida(), FIG_PARA_TROCA) != nullptr) 
         {
             troca.aceitar(true);
-            cout << "Troca ACEITA. As alteracoes no seu album serao aplicadas na proxima etapa (Trocas Globais)." << endl;
-            // *NOTA*: A troca efetiva dos álbuns (movimentar as figurinhas) deve ser feita fora do álbum, no main.cpp ou em uma função auxiliar, 
-            // pois envolve a manipulação dos dois álbuns (receptor e proponente), que está no array global de usuários.
-        } else {
+            cout << "Troca ACEITA. As alteracoes no seu album serao aplicadas na proxima etapa (Trocas Globais)." << endl;      
+        } 
+        else 
+        {
             cout << "ERRO: Voce nao tem a figurinha #" << troca.getFigurinhaRequerida() << " disponivel para troca (Status 2)." << endl;
             troca.aceitar(false);
         }
@@ -359,7 +352,9 @@ void Album::adicionarTroca(Troca t)
     if (this->nroTrocas < 10) 
     {
         this->trocas[this->nroTrocas++] = t;
-    } else {
+    } 
+    else 
+    {
         cout << "Aviso: Limite de solicitacoes de troca recebidas atingido." << endl;
     }
 }

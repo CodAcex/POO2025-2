@@ -140,10 +140,13 @@ void Album::listarFigurinhasColecionaveis() {
     for (int i = 0; i < this->quantidade; i++) {
         int status = this->figurinhas[i].getStatus();
         
-        // Verifica Status 0 (Repetida) OU Status 2 (Marcada para Troca)
-        if (status == 0 || status == 2) { 
+        // Verifica se a figurinha é colecionável (Repetida ou Para Troca)
+        if (status == FIG_NA_COLECAO || status == FIG_PARA_TROCA) { 
+            
+            // CHAMA getNomeStatus() PARA EXIBIR O NOME COMPLETO
             cout << "[#" << this->figurinhas[i].getNro() << "] - " 
-                 << this->figurinhas[i].getNome() << " (Status: " << status << ")" << endl;
+                 << this->figurinhas[i].getNome() << " (" 
+                 << this->figurinhas[i].getNomeStatus() << ")" << endl; // <--- MUDANÇA AQUI
             encontrou = true;
         }
     }

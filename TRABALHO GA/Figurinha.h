@@ -1,6 +1,10 @@
 #ifndef FIGURINHA_H
 #define FIGURINHA_H
 
+#define FIG_NA_COLECAO      0   // Repetida, não colada, não marcada para troca
+#define FIG_COLADA          1   // Colada no álbum
+#define FIG_PARA_TROCA      2   // Disponível para troca
+
 #include <string>
 
 using namespace std;
@@ -25,6 +29,7 @@ public:
     string getTime();
     int getStatus();
     int getNroPagina();
+     string getNomeStatus();
 
     void setStatus(int status);
     void setNroPagina(int nroPagina);

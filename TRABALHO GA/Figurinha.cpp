@@ -31,6 +31,19 @@ string Figurinha::getTime() { return this->time; }
 int Figurinha::getStatus() { return this->status; }
 int Figurinha::getNroPagina() { return this->nroPagina; }
 
+string Figurinha::getNomeStatus()
+{
+     if (this->status == FIG_NA_COLECAO) {
+        return "Repetida/Nao Colada";
+    } else if (this->status == FIG_COLADA) {
+        return "COLADA NO ALBUM";
+    } else if (this->status == FIG_PARA_TROCA) {
+        return "DISPONIVEL PARA TROCA";
+    } else {
+        return "Status Desconhecido";
+    }
+}
+
 // Setters
 void Figurinha::setStatus(int status) { this->status = status; }
 void Figurinha::setNroPagina(int nroPagina) { this->nroPagina = nroPagina; }

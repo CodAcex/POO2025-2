@@ -1,9 +1,11 @@
 #include "Troca.h"
+#include <iostream>
 
 using namespace std;
 
 Troca::Troca()
 {
+    this->status = TROCA_AGUARDANDO;
 }
 
 Troca::Troca(string proponente, int requerida, int disponivel)
@@ -11,11 +13,13 @@ Troca::Troca(string proponente, int requerida, int disponivel)
     this->nomeProponente = proponente;
     this->figurinhaRequerida = requerida;
     this->figurinhaDisponivel = disponivel;
-    this->status = 0; // Pendente
+    this->status = TROCA_AGUARDANDO; // Usando #define
 }
+
+// Implementação do Destrutor mantido
 Troca::~Troca(){}
 
-// Getters (Sem const)
+// Implementação dos Getters
 string Troca::getNomeProponente() { return this->nomeProponente; }
 int Troca::getFigurinhaRequerida() { return this->figurinhaRequerida; }
 int Troca::getFigurinhaDisponivel() { return this->figurinhaDisponivel; }
@@ -23,10 +27,8 @@ int Troca::getStatus() { return this->status; }
 
 void Troca::aceitar(bool aceite) {
     if (aceite) {
-        // Status 1: Aceita
-        this->status = 1;
+        this->status = TROCA_ACEITA; // Usando #define
     } else {
-        // Status 2: Recusada
-        this->status = 2;
+        this->status = TROCA_RECUSADA; // Usando #define
     }
 }

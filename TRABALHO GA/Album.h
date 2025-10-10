@@ -18,6 +18,7 @@ private:
     Troca trocas[10]; 
     int nroTrocas;
     void inicializarPaginas();
+    
     Pagina* encontrarPagina(int nroFigurinha);
 
 public:

@@ -209,8 +209,10 @@ void exibirMenuPrincipal(Usuario usuarios[], int& nroUsuarios, Usuario*& usuario
             if (nroUsuarios < MAX_USUARIOS) 
             {
                 string nome, senha;
-                cout << "Nome de Usuario: "; cin >> nome;
-                cout << "Senha: "; cin >> senha;
+                cout << "Nome de Usuario: "; 
+                cin >> nome;
+                cout << "Senha: "; 
+                cin >> senha;
                 usuarios[nroUsuarios].cadastrar(nome, senha);
                 
                 nroUsuarios++;
@@ -220,8 +222,10 @@ void exibirMenuPrincipal(Usuario usuarios[], int& nroUsuarios, Usuario*& usuario
         else if (opcao == 2) 
         {
             string nome, senha;
-            cout << "Nome de Usuario: "; cin >> nome;
-            cout << "Senha: "; cin >> senha;
+            cout << "Nome de Usuario: "; 
+            cin >> nome;
+            cout << "Senha: "; 
+            cin >> senha;
             for (int i = 0; i < nroUsuarios; ++i) 
             {
                 if (usuarios[i].verificarLogin(nome, senha)) 
@@ -428,7 +432,6 @@ int main()
     Usuario* usuarioLogado = nullptr; 
 
     carregarFigurinhasMestre(figurinhasMestre, nroFigurinhasMestre); 
-    
     carregarDados(usuarios, nroUsuarios, trocasPendentes, nroTrocas);
     
     while (true) 
@@ -441,7 +444,6 @@ int main()
         {
             exibirMenuAlbum(*usuarioLogado, trocasPendentes, nroTrocas, figurinhasMestre, nroFigurinhasMestre,usuarios, nroUsuarios);
             usuarioLogado = nullptr;
- 
         }
     }
     

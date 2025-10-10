@@ -262,7 +262,9 @@ void Album::revisarSolicitacoes()
             cout << "ERRO: Voce nao tem a figurinha #" << troca.getFigurinhaRequerida() << " disponivel para troca (Status 2)." << endl;
             troca.aceitar(false);
         }
-    } else {
+    } 
+    else 
+    {
         troca.aceitar(false);
         cout << "Troca RECUSADA." << endl;
     }

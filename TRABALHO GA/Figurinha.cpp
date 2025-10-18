@@ -16,7 +16,7 @@ Figurinha::Figurinha(int nro, string nome, string time)
     this->nro = nro;
     this->nome = nome;
     this->time = time;
-    this->status = 0; // Inicialmente, não colada/repetida
+    this->status = 0; 
     this->nroPagina = 0;
 }
 

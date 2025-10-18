@@ -6,6 +6,10 @@ Usuario::Usuario()
 {
 }
 
+Usuario::~Usuario()
+{
+}
+
 void Usuario::cadastrar(string nome, string senha)
 {
     this->nomeDeUsuario = nome;

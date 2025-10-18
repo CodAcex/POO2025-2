@@ -23,13 +23,10 @@ public:
     Troca(string nomeProponente, int requerida, int disponivel);
     ~Troca();
 
-    // Getters
     int getStatus();
     string getNomeProponente();
     int getFigurinhaRequerida();
     int getFigurinhaDisponivel();
-    
-    // Método
     void aceitar(bool aceita);
 };
 

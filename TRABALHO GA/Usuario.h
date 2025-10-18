@@ -12,10 +12,10 @@ private:
 
 public:
     Usuario();
-    
+    ~Usuario();
+
     void cadastrar(string nome, string senha);
     bool verificarLogin(string nome, string senha);
-
     string getNomeDeUsuario();
     string getSenha();
     Album& getAlbum();

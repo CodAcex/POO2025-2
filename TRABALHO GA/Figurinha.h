@@ -16,7 +16,7 @@ private:
     string nome;
     string time;
     int status;     // 0: Não Colada/Repetida, 1: Colada, 2: Disponível para Troca
-    int nroPagina;  // Número da página onde deve ser colada
+    int nroPagina;  
 
 public:
     // Construtor
@@ -30,7 +30,6 @@ public:
     int getStatus();
     int getNroPagina();
     string getNomeStatus();
-
     void setStatus(int status);
     void setNroPagina(int nroPagina);
 };

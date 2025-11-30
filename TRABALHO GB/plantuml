@@ -1,0 +1,114 @@
+@startuml
+title Diagrama de Classes - Sistema Biblioteca
+
+' ------------------------------------------------------------------
+' CLASSE ABSTRATA BASE
+' ------------------------------------------------------------------
+abstract class ItemAcervo {
+  # int id
+  # String titulo
+  # int ano
+  # boolean emprestado
+  --
+  + ItemAcervo(id, titulo, ano, emprestado)
+  + virtual ~ItemAcervo()
+  + getId(): int
+  + emprestar()
+  + devolver()
+  --
+  + {abstract} calcularTaxaAtraso(dias): float
+  + {abstract} mostrar()
+  + virtual toCSV(): String
+}
+
+' ------------------------------------------------------------------
+' CLASSES CONCRETAS (RAMO 1: Livros)
+' ------------------------------------------------------------------
+class Livro {
+  # String autor
+  # int paginas
+  --
+  + Livro(id, titulo, ano, autor, paginas)
+  + Livro(id, titulo)
+  + virtual calcularTaxaAtraso(dias): float
+  + virtual mostrar()
+  + virtual toCSV(): String
+}
+
+class LivroRaro {
+  - String condicao
+  --
+  + LivroRaro(id, titulo, ano, autor, paginas, condicao)
+  + virtual calcularTaxaAtraso(dias): float
+  + virtual mostrar()
+  + virtual toCSV(): String
+}
+
+' ------------------------------------------------------------------
+' CLASSES CONCRETAS (RAMO 2: Mídias)
+' ------------------------------------------------------------------
+class MidiaDigital {
+  # String formato
+  --
+  + MidiaDigital(id, titulo, ano, formato)
+  + virtual calcularTaxaAtraso(dias): float
+  + virtual mostrar()
+  + virtual toCSV(): String
+}
+
+class DVDItem {
+  - String regiao
+  --
+  + DVDItem(id, titulo, ano, formato, regiao)
+  + virtual calcularTaxaAtraso(dias): float
+  + virtual mostrar()
+  + virtual toCSV(): String
+}
+
+' ------------------------------------------------------------------
+' CLASSES CONCRETAS (RAMO 3: Periódicos)
+' ------------------------------------------------------------------
+class Revista {
+  - int edicao
+  - String periodicidade
+  --
+  + Revista(id, titulo, ano, edicao, periodicidade)
+  + virtual calcularTaxaAtraso(dias): float
+  + virtual mostrar()
+  + virtual toCSV(): String
+}
+
+' ------------------------------------------------------------------
+' CLASSE GERENCIADORA
+' ------------------------------------------------------------------
+class Biblioteca {
+  - std::vector<ItemAcervo*> itens
+  - int proximoId
+  --
+  + Biblioteca()
+  + ~Biblioteca()
+  + gerarId(): int
+  + adicionar(item: ItemAcervo*)
+  + buscarPorId(id): ItemAcervo*
+  + listarTodos()
+  + removerPorId(id): boolean
+  + salvarCSV(arquivo)
+  + carregarCSV(arquivo)
+}
+
+' ------------------------------------------------------------------
+' RELAÇÕES DE HERANÇA (SETAS DE GENERALIZAÇÃO)
+' ------------------------------------------------------------------
+ItemAcervo <|-- Livro
+ItemAcervo <|-- MidiaDigital
+ItemAcervo <|-- Revista
+
+Livro <|-- LivroRaro
+MidiaDigital <|-- DVDItem
+
+' ------------------------------------------------------------------
+' RELAÇÃO DE COMPOSIÇÃO (AGREGAÇÃO FORTE)
+' ------------------------------------------------------------------
+Biblioteca "1" o-- "0..*" ItemAcervo : gerencia
+
+@enduml

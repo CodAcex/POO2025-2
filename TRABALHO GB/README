@@ -1,0 +1,52 @@
+Album de Figurinhas Virtual
+
+Equipe
+
+Carlos Henrique Yoshihide Guenka
+
+Descrição do Projeto
+
+
+    Este programa foi desenvolvido como parte da disciplina de Programação Orientada a Objetos, com o objetivo de criar um aplicativo simples que simula um sistema de gerenciamento de uma biblioteca com empréstimos e devoluções e que oferece multiplos tipos de mídia, utilizando de C++.
+
+Estrutura do Projeto
+
+Listar e escrever brevemente sobre os principais arquivos de código:
+	
+Biblioteca.cpp  
+
+Biblioteca.h
+
+DVD.cpp
+
+DVD.h
+
+ItemAcervo.cpp
+
+ItemAcervo.h
+
+Livro.cpp
+
+Livro.h
+
+LivroRaro.cpp
+
+LivroRaro.h
+
+main.cpp
+
+MidiaDigital.cpp
+
+MidiaDigital.h
+
+Revista.cpp
+
+Revista.h
+
++ plantuml
+
+Informações Técnicas
+
+    Linguagem: C++ (C++11 ou superior)
+    IDE/Compilador: Visual Studio Code / MinGW 
+    Plataforma-alvo: Windows / Linux / MacOS

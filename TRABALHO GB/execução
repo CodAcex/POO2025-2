@@ -1,0 +1,3 @@
+g++ main.cpp Biblioteca.cpp DVD.cpp ItemAcervo.cpp Livro.cpp LivroRaro.cpp MidiaDigital.cpp Revista.cpp -o main.exe
+
+./main.exe
